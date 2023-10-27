@@ -1,5 +1,9 @@
-import Image from "next/image";
+import Weather from "@/components/Weather";
 
 export default function Home() {
-  return <main className="">hello world</main>;
+  return (
+    <main className="">
+      <Weather />
+    </main>
+  );
 }

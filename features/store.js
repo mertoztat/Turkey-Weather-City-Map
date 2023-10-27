@@ -1,9 +1,9 @@
 "use client";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import mapCounter from "@/features/map/mapSlice";
+import weatherReducer from "@/features/map/weatherSlice";
 
 const rootReducer = combineReducers({
-  map: mapCounter,
+  weather: weatherReducer,
 });
 
 export const store = configureStore({

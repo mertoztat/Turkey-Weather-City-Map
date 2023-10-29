@@ -23,10 +23,15 @@ const Weather = () => {
     getDataCity();
   }, [city]);
 
+  console.log("city", city, "data", data);
+
   return (
-    <>
-      <TurkeyMap onClick={({ name }) => handleCLick(name)} />
-    </>
+    <div className=" mt-10">
+      <TurkeyMap
+        onClick={({ name }) => handleCLick(name)}
+        customStyle={{ idleColor: "#00bbf0", hoverColor: "#fdb44b" }}
+      />
+    </div>
   );
 };
 

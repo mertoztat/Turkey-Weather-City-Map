@@ -8,7 +8,7 @@ const Icon = ({ id }) => {
     <WeatherIcon
       iconId={id}
       name="owm"
-      day
+      day="true"
       className={classNames({
         "text-5xl my-4": true,
         "text-yellow-300": id === 800,

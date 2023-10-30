@@ -8,7 +8,7 @@ export const weatherSlice = createSlice({
     city: "izmir",
     weather: "",
     temp: "",
-    country: "",
+    data: JSON.parse(localStorage.getItem("data") || null),
     name: "",
   },
   reducers: {
@@ -21,8 +21,12 @@ export const weatherSlice = createSlice({
     setTemp: (state, action) => {
       state.temp = action.payload;
     },
-    setCountry: (state, action) => {
-      state.country = action.payload;
+    setData: (state, action) => {
+      if (action.payload) {
+        localStorage.setItem("data", JSON.stringify(action.payload));
+      } else {
+        localStorage.removeItem("data");
+      }
     },
     setName: (state, action) => {
       state.name = action.payload;
@@ -30,7 +34,7 @@ export const weatherSlice = createSlice({
   },
 });
 
-export const { setCity, setWeather, setTemp, setCountry, setName } =
+export const { setCity, setWeather, setTemp, setData, setName } =
   weatherSlice.actions;
 
 export default weatherSlice.reducer;

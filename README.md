@@ -1,3 +1,19 @@
+## Notes: 
+
+"This project was built using next13, tailwind CSS, OpenWeather API, Redux, Redux Toolkit, and Turkey React Map.
+
+After cloning the project to your computer, you need to create a file named .env.local and fill it with the following:
+
+NEXT_PUBLIC_API_URL="https://api.openweathermap.org/data/2.5/"
+NEXT_PUBLIC_API_KEY="You should enter the API key you obtained from OpenWeather here."
+
+Once you've filled in these details, you can run the project by executing 'npm install' and 'npm run dev'."
+
+## Live Link:  [https://patrion-case.vercel.app](https://patrion-case.vercel.app) /
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

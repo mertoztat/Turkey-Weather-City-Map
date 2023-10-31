@@ -45,7 +45,7 @@ const City = () => {
             <span className="mt-2 text-gray-500 text-sm">{getDate}</span>
           </div>
           <div className="w-32 h-32 flex items-center justify-center">
-            <Icon id={weatherInfos.weather[0].id} />
+            <Icon id={weatherInfos?.weather[0].id} />
           </div>
           <p className="text-gray-700 mb-2">
             {weatherInfos?.weather[0].description.slice(0, 1).toUpperCase() +

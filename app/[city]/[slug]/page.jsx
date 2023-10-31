@@ -57,7 +57,7 @@ const City = () => {
               Wind Speed
               <span className="flex justify-center items-center  gap-1 text-md">
                 <GiWindsock size={25} />
-                {windSpeed}m/s
+                {windSpeed}km/s
               </span>
             </div>
 

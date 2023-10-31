@@ -4,15 +4,33 @@ import { nowDate } from "@/utils/getDate";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { setWeather } from "@/features/map/weatherSlice";
+import { GiWindsock } from "react-icons/gi";
+import { LiaTemperatureLowSolid } from "react-icons/lia";
+import { BsSun } from "react-icons/bs";
 
 const City = () => {
   const dispatch = useDispatch();
 
   const weatherInfos = useSelector((state) => state.weather.weather);
 
-  const minTemp = Math.floor(weatherInfos?.main.temp_min);
-  const maxTemp = Math.round(weatherInfos?.main.temp_min);
+  const temp = weatherInfos?.main.temp.toFixed(1);
+  const windSpeed = weatherInfos?.wind.speed;
+  const feltDegree = weatherInfos?.main.feels_like;
   const getDate = nowDate();
+
+  const convertUnixTimeToNormalTime = () => {
+    let unixSunBirthDate = weatherInfos?.sys.sunrise;
+    let date = new Date(unixSunBirthDate * 1000);
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+
+    let formattedTime =
+      hours.toString().padStart(2, "0") +
+      ":" +
+      minutes.toString().padStart(2, "0");
+
+    return formattedTime;
+  };
 
   const handleClick = () => {
     dispatch(setWeather({}));
@@ -33,10 +51,31 @@ const City = () => {
             {weatherInfos?.weather[0].description.slice(0, 1).toUpperCase() +
               weatherInfos?.weather[0].description.slice(1)}
           </p>
-          <div className="text-3xl font-bold text-gray-900 mb-6">
-            {maxTemp}
-            <span className="font-normal text-gray-700 mx-1">/</span>
-            {minTemp}
+          <div className="text-3xl font-bold text-gray-900 mb-6">{temp}°</div>
+          <div className="flex w-full  items-center justify-between">
+            <div className="flex justify-center items-center flex-col gap-1 font-medium">
+              Wind Speed
+              <span className="flex justify-center items-center  gap-1 text-md">
+                <GiWindsock size={25} />
+                {windSpeed}m/s
+              </span>
+            </div>
+
+            <div className="flex justify-center items-center flex-col gap-1 font-medium">
+              Felt Degree
+              <span className="flex justify-center items-center  gap-1 text-md">
+                <LiaTemperatureLowSolid size={20} />
+                {feltDegree}°
+              </span>
+            </div>
+
+            <div className="flex justify-center items-center flex-col gap-1 font-medium">
+              Sunrise
+              <span className="flex justify-center items-center  gap-1 text-md">
+                <BsSun size={20} />
+                {convertUnixTimeToNormalTime()}
+              </span>
+            </div>
           </div>
         </div>
       </div>

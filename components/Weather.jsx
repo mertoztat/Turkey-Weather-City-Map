@@ -14,7 +14,6 @@ const Weather = () => {
 
   const handleCLick = async (name) => {
     dispatch(setCity(name));
-    dispatch(setData());
     await getCityDetails(name);
     router.push(`/city/${name}`);
   };

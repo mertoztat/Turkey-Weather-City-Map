@@ -1,9 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getCityDetails } from "@/service/api";
 import TurkeyMap from "turkey-map-react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCity, setData } from "@/features/map/weatherSlice";
+import { setCity, setData, setWeather } from "@/features/map/weatherSlice";
 import { useRouter } from "next/navigation";
 
 const Weather = () => {
@@ -12,19 +12,22 @@ const Weather = () => {
 
   const cityName = useSelector((state) => state.weather.city);
 
-  useEffect(() => {
-    const getDataCity = async () => {
-      const response = await getCityDetails(cityName);
-      dispatch(setData(response));
-    };
-    getDataCity();
-  }, [cityName, dispatch]);
-
   const handleCLick = async (name) => {
     dispatch(setCity(name));
+    dispatch(setData());
     await getCityDetails(name);
     router.push(`/city/${name}`);
   };
+
+  useEffect(() => {
+    const getDataCity = async () => {
+      const response = await getCityDetails(cityName);
+      console.log("response bilgisi useeffec: ", response);
+      dispatch(setWeather(response));
+    };
+
+    getDataCity();
+  }, [cityName, dispatch]);
 
   return (
     <div className=" mt-10">

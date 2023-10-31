@@ -16,7 +16,6 @@ const City = () => {
 
   const handleClick = () => {
     dispatch(setWeather({}));
-    console.log("handle click tıklandı");
   };
 
   return (

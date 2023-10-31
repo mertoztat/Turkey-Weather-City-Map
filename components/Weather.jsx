@@ -22,7 +22,6 @@ const Weather = () => {
   useEffect(() => {
     const getDataCity = async () => {
       const response = await getCityDetails(cityName);
-      console.log("response bilgisi useeffec: ", response);
       dispatch(setWeather(response));
     };
 
